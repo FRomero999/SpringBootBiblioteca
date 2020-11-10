@@ -5,10 +5,12 @@
  */
 package com.paco.demogit;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pacoromero
  */
-public class NewClass {
+public class NewClass implements Serializable {
     
 }
