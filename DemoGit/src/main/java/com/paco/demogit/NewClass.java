@@ -7,7 +7,7 @@ package com.paco.demogit;
 
 /**
  *
- * @author paco
+ * @author pacoromero
  */
 public class NewClass {
     
