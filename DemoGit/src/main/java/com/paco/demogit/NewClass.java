@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author pacoromero es la caña de España
+ * @author pacoromero es la caña de España y del extranjero
  */
 public class NewClass implements Serializable {
     
