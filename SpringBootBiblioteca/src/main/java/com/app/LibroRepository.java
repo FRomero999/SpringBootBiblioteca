@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example;
+package com.app;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author paco
  */
-public interface LibroRepository extends JpaRepository<Libro, Integer> {
+public interface LibroRepository extends JpaRepository<models.Libro, Integer> {
     
 }
