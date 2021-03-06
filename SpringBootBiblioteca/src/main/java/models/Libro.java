@@ -32,6 +32,7 @@ public class Libro implements Serializable{
     private String estado;
 
     public Libro() {
+        
     }
 
     public Libro(Integer id, String nombre, String autor, String categoria, Integer año, String ISBN, String estado) {

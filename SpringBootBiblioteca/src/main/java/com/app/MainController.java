@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
@@ -32,7 +33,8 @@ public class MainController {
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<models.Libro> getAllLibros() {
+    @ResponseBody
+    public Iterable<models.Libro> getAllLibros() {
         System.out.println(repositorio.count());
         System.out.println(repositorio.toString());
         return repositorio.findAll();
@@ -57,5 +59,11 @@ public class MainController {
         return "vista-libro";
     }   
 
+    @ResponseBody
+    @RequestMapping(value = "/guardarLibro", method = RequestMethod.POST)
+    public Libro guardarLibro(@ModelAttribute Libro libro, Model model) {
+        repositorio.save(libro);
+        return libro;
+    }
     
 }
