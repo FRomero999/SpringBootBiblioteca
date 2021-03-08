@@ -8,6 +8,7 @@ package com.app;
 import java.util.Optional;
 import models.Libro;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class MainController {
     public Iterable<models.Libro> getAllLibros() {
         System.out.println(repositorio.count());
         System.out.println(repositorio.toString());
-        return repositorio.findAll();
+        return repositorio.findAll(Sort.by(Sort.Direction.ASC, "nombre"));
     }   
     
     
@@ -49,9 +50,15 @@ public class MainController {
     
     @RequestMapping(path="/biblioteca", method = RequestMethod.GET)
     public String listado(Model pagina) {
-        pagina.addAttribute("biblioteca",repositorio.findAll());
+        pagina.addAttribute("biblioteca",repositorio.findAll(Sort.by(Sort.Direction.ASC, "nombre")));
         return "vista-biblioteca";
     }   
+
+    @RequestMapping(path="/disponibles", method = RequestMethod.GET)
+    public String disponibles(Model pagina) {
+        pagina.addAttribute("biblioteca",repositorio.findByEstado("disponible"));
+        return "vista-biblioteca";
+    } 
     
     @RequestMapping(path="/biblioteca/{id}", method = RequestMethod.GET)
     public String verLibro(@PathVariable Integer id, Model pagina2) {            
